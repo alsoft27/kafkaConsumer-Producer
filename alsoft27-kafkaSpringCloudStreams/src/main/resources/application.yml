@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: rocket-01.srvs.cloudkafka.com:9094,rocket-01.srvs.cloudkafka.com:9094,rocket-01.srvs.cloudkafka.com:9094
+          configuration:
+            security:
+              protocol: SASL_SSL
+            sasl:
+              mechanism: SCRAM-SHA-256
+              jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${KAFKA_USERNAME}" password="${KAFKA_PASSWORD}";  
+      bindings:
+        messages-in:
+          destination: 6hvf2rfu-stream
+          contentType: application/json
+        messages-out:
+          destination: 6hvf2rfu-stream
+          contentType: application/json
+
+        
